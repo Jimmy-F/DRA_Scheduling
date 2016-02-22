@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Mon Feb 22 15:10:50 CET 2016
+markTmpDer=true
+builderNum=2
+outputDir=latex/
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=latex
+mainTexFile=refman.tex
+outputFile=refman.pdf
+langSpell=
+markDer=true
+srcDir=latex/
