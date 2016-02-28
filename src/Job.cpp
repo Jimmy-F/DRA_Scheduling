@@ -36,12 +36,12 @@ void Job::setJobTasks(const char* aJobTask)
 	jobTasks = aJobTask;
 }
 
-unsigned short int Job::getID()
+unsigned short int Job::getID()const
 {
 	return ID;
 }
 
-void setID(const unsigned short int anID)
+void Job::setID(const unsigned short int anID)
 {
 	ID = anID;
 }
