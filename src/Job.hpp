@@ -11,7 +11,12 @@
 class Job {
 public:
 	Job();
+	Job(unsigned short int aID,unsigned long int aStartTime, unsigned long int aEndTime);
 	virtual ~Job();
+private:
+	unsigned short int ID;
+	unsigned long int startTime;
+	unsigned long int endTime;
 };
 
 #endif /* SRC_JOB_HPP_ */

@@ -7,12 +7,18 @@
 
 #include "Machine.hpp"
 
-Machine::Machine() {
-	// TODO Auto-generated constructor stub
+Machine::Machine()
+{
+	ID = 0;
+}
+
+Machine::Machine(unsigned char aID)
+	:ID(aID)
+{
 
 }
 
-Machine::~Machine() {
-	// TODO Auto-generated destructor stub
+Machine::~Machine()
+{
 }
 

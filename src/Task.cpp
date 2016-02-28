@@ -7,12 +7,20 @@
 
 #include "Task.hpp"
 
-Task::Task() {
-	// TODO Auto-generated constructor stub
+Task::Task()
+{
+	taskTime = 0;
+	ID = 0;
+}
+
+Task::Task(unsigned short int aTaskTime, unsigned short int aID)
+	:taskTime(aTaskTime),ID(aID)
+{
 
 }
 
-Task::~Task() {
-	// TODO Auto-generated destructor stub
+Task::~Task()
+{
+
 }
 
