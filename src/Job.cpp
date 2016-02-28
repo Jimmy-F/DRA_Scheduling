@@ -15,6 +15,7 @@ Job::Job()
 	startTime = LONG_MAX;
 	endTime = LONG_MAX;
 	remainingJobTime = LONG_MAX;
+	slack = SHRT_MAX;
 }
 
 Job::Job(unsigned short int aID, std::string& aJobTask)
@@ -23,6 +24,7 @@ Job::Job(unsigned short int aID, std::string& aJobTask)
 	startTime = LONG_MAX;
 	endTime = LONG_MAX;
 	remainingJobTime = LONG_MAX;
+	slack = SHRT_MAX;
 }
 
 Job::~Job()
@@ -41,9 +43,25 @@ void Job::setJobTasks(const char* aJobTask)
 
 void Job::calculateTotalRemainingTime()
 {
+}
+
+void Job::createTasks()
+{
+	std::string tempTask = "";
+	unsigned char whitespaceCounter = 0;
 	for(unsigned int i = 0; i < jobTasks.length(); i++)
 	{
-		std::cout << jobTasks.length() << std::endl;
+		tempTask += jobTasks[i];
+		if(jobTasks[i] == ' ')
+		{
+			whitespaceCounter++;
+		}
+		if(whitespaceCounter == 2)
+		{
+			std::cout << tempTask << std::endl;
+			tempTask = "";
+			whitespaceCounter = 0;
+		}
 	}
 }
 
@@ -52,7 +70,7 @@ unsigned short int Job::getID()const
 	return ID;
 }
 
-unsigned long int Job::getRemainingJobTime()
+unsigned long int Job::getRemainingJobTime()const
 {
 	return remainingJobTime;
 }
