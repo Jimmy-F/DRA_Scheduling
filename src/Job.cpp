@@ -7,12 +7,20 @@
 
 #include "Job.hpp"
 
-Job::Job() {
-	// TODO Auto-generated constructor stub
+Job::Job()
+{
+	ID = 0;
+	startTime = 0;
+	endTime = 0;
+}
+
+Job::Job(unsigned short int aID,unsigned long int aStartTime, unsigned long int aEndTime,std::vector<Task>aTaskList)
+	:ID(aID),startTime(aStartTime),endTime(aEndTime),taskList(aTaskList)
+{
 
 }
 
-Job::~Job() {
-	// TODO Auto-generated destructor stub
+Job::~Job()
+{
 }
 
