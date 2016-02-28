@@ -15,10 +15,12 @@
 class Job {
 public:
 	Job();
-	Job(unsigned short int aID,const char* aJobTask);
+	Job(unsigned short int aID, std::string& aJobTask);
 	virtual ~Job();
 	std::string getJobTasks()const;
 	void setJobTasks(const char* aJobTask);
+	unsigned short int getID()const;
+	void setID(const unsigned short int anID);
 private:
 	unsigned short int ID;
 	unsigned long int startTime;

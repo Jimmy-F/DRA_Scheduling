@@ -36,7 +36,6 @@ std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 			std::getline(jobData, jobMachineLine);
 			std::cout << jobMachineLine << std::endl;
 
-			Job job(12, "400");
 			for (int i = 0; i < (int)jobMachineLine[0] - '0'; i++)
 			{
 				std::string buffer;

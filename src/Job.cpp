@@ -15,7 +15,7 @@ Job::Job()
 	endTime = LONG_MAX;
 }
 
-Job::Job(unsigned short int aID,const char* aJobTask)
+Job::Job(unsigned short int aID, std::string& aJobTask)
 	:ID(aID),jobTasks(aJobTask)
 {
 	startTime = LONG_MAX;
@@ -34,4 +34,14 @@ std::string Job::getJobTasks()const
 void Job::setJobTasks(const char* aJobTask)
 {
 	jobTasks = aJobTask;
+}
+
+unsigned short int Job::getID()
+{
+	return ID;
+}
+
+void setID(const unsigned short int anID)
+{
+	ID = anID;
 }
