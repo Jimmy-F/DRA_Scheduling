@@ -14,24 +14,29 @@
 
 class Job {
 public:
+	//Constructors
 	Job();
 	Job(unsigned short int aID, std::string& aJobTask);
 	virtual ~Job();
-	std::string getJobTasks()const;
-	void setJobTasks(const char* aJobTask);
-	void calculateTotalRemainingTime();
+
+	//Methods
+	void updateRemainingTime();
 	void createTasks();
-	unsigned long int getRemainingJobTime()const;
 	unsigned short int parseTaskMachine(std::string aTaskString);
 	unsigned short int parseTaskTime(std::string aTaskString);
 
+	//Getters and Setters
+	unsigned long int getRemainingTime()const;
+	void setRemainingTime(unsigned long int aRemainingTime);
 	unsigned short int getID()const;
 	void setID(const unsigned short int anID);
+	std::string getJobTasks()const;
+	void setJobTasks(const char* aJobTask);
 private:
 	unsigned short int ID;
 	unsigned long int startTime;
 	unsigned long int endTime;
-	unsigned long int remainingJobTime;
+	unsigned long int remainingTime;
 	unsigned short int slack;
 	std::string jobTasks;
 	std::vector<Task>taskList;

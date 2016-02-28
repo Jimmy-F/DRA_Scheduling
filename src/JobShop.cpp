@@ -66,5 +66,6 @@ void JobShop::scheduleJobs(std::ifstream& jobData)
 	jobList = extractJobData(jobData);
 	for(Job n : jobList) {
 		n.createTasks();
+		n.updateRemainingTime();
 	}
 }
