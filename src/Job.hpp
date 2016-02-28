@@ -19,12 +19,15 @@ public:
 	virtual ~Job();
 	std::string getJobTasks()const;
 	void setJobTasks(const char* aJobTask);
+	void calculateTotalRemainingTime();
 	unsigned short int getID()const;
 	void setID(const unsigned short int anID);
+	unsigned long int getRemainingJobTime();
 private:
 	unsigned short int ID;
 	unsigned long int startTime;
 	unsigned long int endTime;
+	unsigned long int remainingJobTime;
 	std::string jobTasks;
 	std::vector<Task>taskList;
 };
