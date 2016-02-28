@@ -52,7 +52,7 @@ unsigned short int Job::getID()const
 	return ID;
 }
 
-unsigned long int Job::getRemainingJobTime()
+unsigned long int Job::getRemainingJobTime()const
 {
 	return remainingJobTime;
 }

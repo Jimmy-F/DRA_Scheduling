@@ -7,7 +7,7 @@ int main(int argc, char **argv)
 	std::ifstream jobData ("src/jobData.txt");
 
 	JobShop js;
-	js.extractJobData(jobData);
+	js.scheduleJobs(jobData);
 
 	return 0;
 }

@@ -22,7 +22,7 @@ public:
 	void calculateTotalRemainingTime();
 	unsigned short int getID()const;
 	void setID(const unsigned short int anID);
-	unsigned long int getRemainingJobTime();
+	unsigned long int getRemainingJobTime()const;
 private:
 	unsigned short int ID;
 	unsigned long int startTime;

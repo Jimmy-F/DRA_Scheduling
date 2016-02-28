@@ -21,6 +21,7 @@ public:
 	void setJobList(const std::vector<Job> aJobList);
 	std::vector<Job> extractJobData(std::ifstream& jobData);
 	void scheduleJobs(std::ifstream& jobData);
+	unsigned long int getCriticalPath();
 private:
 	std::vector<Job>jobList;
 };
