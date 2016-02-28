@@ -13,6 +13,9 @@ public:
 	Task();
 	Task(unsigned short int aTaskTime,unsigned short int aID, unsigned short int machine);
 	virtual ~Task();
+	unsigned short int getTaskTime()const;
+	unsigned short int getID()const;
+	unsigned short int getMachine()const;
 private:
 	unsigned short int taskTime;
 	unsigned short int ID;

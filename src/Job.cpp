@@ -48,7 +48,8 @@ void Job::calculateTotalRemainingTime()
 void Job::createTasks()
 {
 	std::string tempTask = "";
-	unsigned char whitespaceCounter = 0;
+	unsigned short int taskID = 0;
+	unsigned short int whitespaceCounter = 0;
 	for(unsigned int i = 0; i < jobTasks.length(); i++)
 	{
 		tempTask += jobTasks[i];
@@ -56,13 +57,53 @@ void Job::createTasks()
 		{
 			whitespaceCounter++;
 		}
-		if(whitespaceCounter == 2)
+		if(whitespaceCounter == 2 || i+1 == jobTasks.length())
 		{
-			std::cout << tempTask << std::endl;
+			taskList.push_back(Task(parseTaskTime(tempTask),taskID,parseTaskMachine(tempTask)));
+			taskID++;
 			tempTask = "";
 			whitespaceCounter = 0;
 		}
 	}
+}
+
+unsigned short int Job::parseTaskMachine(std::string aTaskString)
+{
+	std::string taskMachineString = "";
+	unsigned short int taskTime = 0;
+	for(unsigned int i = 0;i < aTaskString.length();i++)
+	{
+		if(aTaskString[i] == ' ')
+		{
+			break;
+		}
+		else
+		{
+			taskMachineString += aTaskString[i];
+		}
+	}
+	taskTime = std::stoi(taskMachineString);
+	return taskTime;
+}
+
+unsigned short int Job::parseTaskTime(std::string aTaskString)
+{
+	std::string taskTimeString = "";
+	unsigned short int machineNumber;
+	unsigned char whitespaceCounter = 0;
+	for(unsigned int i = 0; i < aTaskString.length();i++)
+	{
+		if(aTaskString[i] == ' ')
+		{
+			whitespaceCounter++;
+		}
+		if(whitespaceCounter == 1)
+		{
+			taskTimeString += aTaskString[i];
+		}
+	}
+	machineNumber = std::stoi(taskTimeString);
+	return machineNumber;
 }
 
 unsigned short int Job::getID()const

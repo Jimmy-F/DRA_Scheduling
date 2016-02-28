@@ -21,9 +21,12 @@ public:
 	void setJobTasks(const char* aJobTask);
 	void calculateTotalRemainingTime();
 	void createTasks();
+	unsigned long int getRemainingJobTime()const;
+	unsigned short int parseTaskMachine(std::string aTaskString);
+	unsigned short int parseTaskTime(std::string aTaskString);
+
 	unsigned short int getID()const;
 	void setID(const unsigned short int anID);
-	unsigned long int getRemainingJobTime()const;
 private:
 	unsigned short int ID;
 	unsigned long int startTime;
