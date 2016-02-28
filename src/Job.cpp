@@ -14,8 +14,8 @@ Job::Job()
 	endTime = 0;
 }
 
-Job::Job(unsigned short int aID,unsigned long int aStartTime, unsigned long int aEndTime)
-	:ID(aID),startTime(aStartTime),endTime(aEndTime)
+Job::Job(unsigned short int aID,unsigned long int aStartTime, unsigned long int aEndTime,std::vector<Task>aTaskList)
+	:ID(aID),startTime(aStartTime),endTime(aEndTime),taskList(aTaskList)
 {
 
 }

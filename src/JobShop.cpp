@@ -7,12 +7,18 @@
 
 #include "JobShop.hpp"
 
-JobShop::JobShop() {
-	// TODO Auto-generated constructor stub
+JobShop::JobShop()
+{
 
 }
 
-JobShop::~JobShop() {
-	// TODO Auto-generated destructor stub
+JobShop::JobShop(std::vector<Job>aJobList):jobList(aJobList)
+{
+
+}
+
+JobShop::~JobShop()
+{
+
 }
 
