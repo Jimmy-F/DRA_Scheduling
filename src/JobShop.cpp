@@ -24,6 +24,16 @@ JobShop::~JobShop()
 
 }
 
+std::vector<Job> JobShop::getJobList()const
+{
+	return jobList;
+}
+
+void JobShop::setJobList(const std::vector<Job> aJobList)
+{
+	jobList = aJobList;
+}
+
 std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 {
 		std::vector<std::string> jobsStr;
@@ -34,7 +44,6 @@ std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 		if (jobData.is_open())
 		{
 			std::getline(jobData, jobMachineLine);
-			std::cout << jobMachineLine << std::endl;
 
 			for (int i = 0; i < (int)jobMachineLine[0] - '0'; i++)
 			{
@@ -42,7 +51,6 @@ std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 				std::getline(jobData, buffer);
 				Job job(i, buffer);
 				jobs.push_back(job);
-
 			}
 			jobData.close();
 		}
@@ -50,10 +58,10 @@ std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 		{
 			std::cout << "Unable to open file" << std::endl;
 		}
+		return jobs;
+}
 
-		for (const Job n : jobs)
-		{
-			std::cout << n.getJobTasks() << std::endl;
-		}
-
+void JobShop::scheduleJobs(std::ifstream& jobData)
+{
+	jobList = extractJobData(jobData);
 }

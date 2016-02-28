@@ -17,7 +17,10 @@ public:
 	JobShop();
 	JobShop(std::vector<Job>aJobList);
 	virtual ~JobShop();
+	std::vector<Job> getJobList()const;
+	void setJobList(const std::vector<Job> aJobList);
 	std::vector<Job> extractJobData(std::ifstream& jobData);
+	void scheduleJobs(std::ifstream& jobData);
 private:
 	std::vector<Job>jobList;
 };
