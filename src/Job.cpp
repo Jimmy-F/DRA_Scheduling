@@ -6,6 +6,7 @@
  */
 
 #include "Job.hpp"
+#include <climits>
 
 Job::Job()
 {
