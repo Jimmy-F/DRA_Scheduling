@@ -1,10 +1,10 @@
-#include <fstream>
 #include "JobShop.hpp"
-#include "Job.hpp"
+#include <fstream>
+#include <iostream>
 
 int main(int argc, char **argv)
 {
-	std::ifstream jobData ("src/jobData.txt");
+	std::ifstream jobData (argv[1]);
 
 	JobShop js;
 	js.scheduleJobs(jobData);

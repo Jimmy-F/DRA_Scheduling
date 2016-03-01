@@ -79,6 +79,7 @@ unsigned long int JobShop::getCriticalPath()
 		criticalPath = jobList[std::distance(jobList.begin(), it)].getRemainingTime();
 
 	return criticalPath;
+
 }
 
 
