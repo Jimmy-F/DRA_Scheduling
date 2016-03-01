@@ -9,26 +9,21 @@
 #include <climits>
 #include <iostream>
 
-Job::Job()
+Job::Job() :
+		ID(SHRT_MAX),startTime(LONG_MAX),endTime(LONG_MAX),remainingTime(LONG_MAX),slack(SHRT_MAX)
 {
-	ID = SHRT_MAX;
-	startTime = LONG_MAX;
-	endTime = LONG_MAX;
-	remainingTime = LONG_MAX;
-	slack = SHRT_MAX;
+
 }
 
-Job::Job(unsigned short int aID, std::string& aJobTask)
-	:ID(aID),jobTasks(aJobTask)
+Job::Job(unsigned short int aID, std::string& aJobTask) :
+		ID(aID),startTime(LONG_MAX),endTime(LONG_MAX),remainingTime(LONG_MAX),slack(SHRT_MAX),jobTasks(aJobTask)
 {
-	startTime = LONG_MAX;
-	endTime = LONG_MAX;
-	remainingTime = LONG_MAX;
-	slack = SHRT_MAX;
+
 }
 
 Job::~Job()
 {
+
 }
 
 std::string Job::getJobTasks()const
@@ -140,6 +135,11 @@ unsigned short int Job::getSlack()const
 void Job::setSlack(const unsigned short int newSlack)
 {
 	slack = newSlack;
+}
+
+std::vector<Task> Job::getTaskList()
+{
+	return taskList;
 }
 
 void Job::calculateSlack(unsigned short int aCriticalPath)

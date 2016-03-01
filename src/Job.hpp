@@ -36,6 +36,7 @@ public:
 	void setSlack(const unsigned short int aCriticalPath);
 	void calculateSlack(const unsigned short int aCriticalPath);
 	bool operator<(const Job& aJob)const;
+	std::vector<Task> getTaskList();
 
 private:
 	unsigned short int ID;

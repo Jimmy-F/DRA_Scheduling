@@ -8,16 +8,14 @@
 #include "Task.hpp"
 #include <climits>
 
-Task::Task()
+Task::Task() :
+		taskTime(SHRT_MAX),ID(SHRT_MAX),machine(SHRT_MAX)
 {
-	taskTime = SHRT_MAX;
-	ID = SHRT_MAX;
-	machine = SHRT_MAX;
 
 }
 
-Task::Task(unsigned short int aTaskTime, unsigned short int aID, unsigned short int aMachine)
-	: taskTime(aTaskTime), ID(aID), machine(aMachine)
+Task::Task(unsigned short int aTaskTime, unsigned short int aID, unsigned short int aMachine) :
+		taskTime(aTaskTime), ID(aID), machine(aMachine)
 {
 
 }
