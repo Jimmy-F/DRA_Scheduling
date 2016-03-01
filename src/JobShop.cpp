@@ -8,7 +8,6 @@
 #include "JobShop.hpp"
 #include "Job.hpp"
 #include <iostream>
-#include <algorithm>
 
 JobShop::JobShop()
 {
@@ -68,6 +67,11 @@ void JobShop::scheduleJobs(std::ifstream& jobData)
 
 	unsigned long int criticalPath = getCriticalPath();
 	std::cout << criticalPath << std::endl;
+
+	for(Job n : jobList) {
+		n.createTasks();
+		n.updateRemainingTime();
+	}
 }
 
 unsigned long int JobShop::getCriticalPath()
@@ -79,22 +83,4 @@ unsigned long int JobShop::getCriticalPath()
 		criticalPath = jobList[std::distance(jobList.begin(), it)].getRemainingTime();
 
 	return criticalPath;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

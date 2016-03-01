@@ -27,3 +27,17 @@ Task::~Task()
 
 }
 
+unsigned short int Task::getTaskTime()const
+{
+	return taskTime;
+}
+
+unsigned short int Task::getID()const
+{
+	return ID;
+}
+
+unsigned short int Task::getMachine()const
+{
+	return machine;
+}

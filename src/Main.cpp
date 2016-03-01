@@ -8,6 +8,5 @@ int main(int argc, char **argv)
 
 	JobShop js;
 	js.scheduleJobs(jobData);
-
 	return 0;
 }
