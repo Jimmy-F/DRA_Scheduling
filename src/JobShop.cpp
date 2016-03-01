@@ -8,13 +8,16 @@
 #include "JobShop.hpp"
 #include "Job.hpp"
 #include <iostream>
+#include <algorithm>
 
-JobShop::JobShop()
+JobShop::JobShop() :
+	criticalPath(0)
 {
 
 }
 
-JobShop::JobShop(std::vector<Job>aJobList):jobList(aJobList)
+JobShop::JobShop(std::vector<Job>aJobList) :
+		jobList(aJobList), criticalPath(0)
 {
 
 }
@@ -33,6 +36,7 @@ void JobShop::setJobList(const std::vector<Job> aJobList)
 {
 	jobList = aJobList;
 }
+
 
 std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 {
@@ -63,24 +67,25 @@ std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 
 void JobShop::scheduleJobs(std::ifstream& jobData)
 {
-	jobList = extractJobData(jobData);
-
-	unsigned long int criticalPath = getCriticalPath();
-	std::cout << criticalPath << std::endl;
-
-	for(Job n : jobList) {
-		n.createTasks();
-		n.updateRemainingTime();
-	}
+	initializeJobs(jobData);
+	updateCriticalPath();
 }
 
-unsigned long int JobShop::getCriticalPath()
+void JobShop::updateCriticalPath()
 {
-	unsigned long criticalPath = 0;
-
 	std::vector<Job>::iterator it = std::max_element(jobList.begin(), jobList.end(),
-				[](const Job& j1, const Job& j2) {return j1.getRemainingTime() > j2.getRemainingTime();});
-		criticalPath = jobList[std::distance(jobList.begin(), it)].getRemainingTime();
+				[](const Job& j1, const Job& j2)
+				{return j1.getRemainingTime() < j2.getRemainingTime();}
+	);
+	criticalPath = jobList[std::distance(jobList.begin(), it)].getRemainingTime();
+}
 
-	return criticalPath;
+void JobShop::initializeJobs(std::ifstream& jobData)
+{
+	jobList = extractJobData(jobData);
+	for(Job& n : jobList)
+		{
+			n.createTasks();
+			n.updateRemainingTime();
+		}
 }

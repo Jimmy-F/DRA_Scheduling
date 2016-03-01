@@ -32,6 +32,9 @@ public:
 	void setID(const unsigned short int anID);
 	std::string getJobTasks()const;
 	void setJobTasks(const char* aJobTask);
+	void calculateSlack(const unsigned short int aCriticalPath);
+	bool operator<(const Job& aJob)const;
+
 private:
 	unsigned short int ID;
 	unsigned long int startTime;

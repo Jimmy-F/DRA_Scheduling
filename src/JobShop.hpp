@@ -21,9 +21,11 @@ public:
 	void setJobList(const std::vector<Job> aJobList);
 	std::vector<Job> extractJobData(std::ifstream& jobData);
 	void scheduleJobs(std::ifstream& jobData);
-	unsigned long int getCriticalPath();
+	void updateCriticalPath();
+	void initializeJobs(std::ifstream& jobData);
 private:
 	std::vector<Job>jobList;
+	unsigned short int criticalPath;
 };
 
 #endif /* SRC_JOBSHOP_HPP_ */

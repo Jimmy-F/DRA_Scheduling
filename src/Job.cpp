@@ -131,3 +131,13 @@ void Job::setID(const unsigned short int anID)
 {
 	ID = anID;
 }
+
+void Job::calculateSlack(unsigned short int aCriticalPath)
+{
+	slack = aCriticalPath - remainingTime;
+}
+
+bool Job::operator<(const Job& aJob)const
+{
+	return slack < aJob.slack;
+}
