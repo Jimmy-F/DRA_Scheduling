@@ -132,9 +132,19 @@ void Job::setID(const unsigned short int anID)
 	ID = anID;
 }
 
+unsigned short int Job::getSlack()const
+{
+	return slack;
+}
+
+void Job::setSlack(const unsigned short int newSlack)
+{
+	slack = newSlack;
+}
+
 void Job::calculateSlack(unsigned short int aCriticalPath)
 {
-	slack = aCriticalPath - remainingTime;
+	setSlack(aCriticalPath - getRemainingTime());
 }
 
 bool Job::operator<(const Job& aJob)const

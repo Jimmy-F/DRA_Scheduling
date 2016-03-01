@@ -22,7 +22,8 @@ public:
 	std::vector<Job> extractJobData(std::ifstream& jobData);
 	void scheduleJobs(std::ifstream& jobData);
 	void updateCriticalPath();
-	void initializeJobs(std::ifstream& jobData);
+	void initializeJobList(std::ifstream& jobData);
+	void updateSlackJobList();
 private:
 	std::vector<Job>jobList;
 	unsigned short int criticalPath;

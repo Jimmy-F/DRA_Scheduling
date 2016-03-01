@@ -67,8 +67,10 @@ std::vector<Job> JobShop::extractJobData(std::ifstream& jobData)
 
 void JobShop::scheduleJobs(std::ifstream& jobData)
 {
-	initializeJobs(jobData);
+	initializeJobList(jobData);
 	updateCriticalPath();
+	updateSlackJobList();
+
 }
 
 void JobShop::updateCriticalPath()
@@ -80,12 +82,20 @@ void JobShop::updateCriticalPath()
 	criticalPath = jobList[std::distance(jobList.begin(), it)].getRemainingTime();
 }
 
-void JobShop::initializeJobs(std::ifstream& jobData)
+void JobShop::initializeJobList(std::ifstream& jobData)
 {
 	jobList = extractJobData(jobData);
 	for(Job& n : jobList)
 		{
 			n.createTasks();
 			n.updateRemainingTime();
+		}
+}
+
+void JobShop::updateSlackJobList()
+{
+	for (Job& n : jobList)
+		{
+			n.calculateSlack(criticalPath);
 		}
 }
