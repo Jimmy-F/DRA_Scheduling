@@ -10,13 +10,13 @@
 #include <iostream>
 
 Job::Job() :
-		ID(SHRT_MAX),startTime(LONG_MAX),endTime(LONG_MAX),remainingTime(LONG_MAX),slack(SHRT_MAX)
+		ID(SHRT_MAX),startTime(LONG_MAX),endTime(LONG_MAX),remainingTime(LONG_MAX),slack(SHRT_MAX), started(false)
 {
 
 }
 
 Job::Job(unsigned short int aID, std::string& aJobTask) :
-		ID(aID),startTime(LONG_MAX),endTime(LONG_MAX),remainingTime(LONG_MAX),slack(SHRT_MAX),jobTasks(aJobTask)
+		ID(aID),startTime(0),endTime(0),remainingTime(LONG_MAX),slack(SHRT_MAX),jobTasks(aJobTask), started(false)
 {
 
 }
@@ -70,7 +70,7 @@ void Job::createTasks()
 		}
 		if(whitespaceCounter == 2 || i+1 == jobTasks.length())
 		{
-			taskList.push_back(Task(parseTaskTime(tempTask),taskID,parseTaskMachine(tempTask)));
+			taskList.push_back(Task(parseTaskTime(tempTask),taskID,parseTaskMachine(tempTask),getID()));
 			taskID++;
 			tempTask = "";
 			whitespaceCounter = 0;
@@ -137,7 +137,7 @@ void Job::setSlack(const unsigned short int newSlack)
 	slack = newSlack;
 }
 
-std::vector<Task> Job::getTaskList()
+std::vector<Task> Job::getTaskList() const
 {
 	return taskList;
 }
@@ -149,5 +149,49 @@ void Job::calculateSlack(unsigned short int aCriticalPath)
 
 bool Job::operator<(const Job& aJob)const
 {
+	if (slack == aJob.slack)
+	{
+		return ID < aJob.ID;
+	}
+	else
+	{
 	return slack < aJob.slack;
+	}
+}
+
+bool Job::operator==(const Job& aJob)const
+{
+	return ID == aJob.ID;
+}
+
+void Job::eraseTask()
+{
+	taskList.erase(taskList.begin());
+}
+
+
+void Job::increaseEndTime()
+{
+	endTime++;
+}
+
+bool Job::hasStarted()const
+{
+	return started;
+}
+
+void Job::setStartTime(const unsigned long int aStartTime)
+{
+	started = true;
+	startTime = aStartTime;
+}
+
+unsigned long int Job::getStartTime()const
+{
+	return startTime;
+}
+
+unsigned long int Job::getEndTime()const
+{
+	return endTime;
 }
